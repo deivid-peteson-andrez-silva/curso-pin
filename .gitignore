@@ -1,0 +1,13 @@
+# Ignorar arquivos de log
+*.log
+
+# Ignorar a pasta bin e obj no .NET
+bin/
+obj/
+
+# Ignorar arquivos do Visual Studio
+.vs/
+.vscode/
+
+# Ignorar pacotes do NuGet
+packages/
