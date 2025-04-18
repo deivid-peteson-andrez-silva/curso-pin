@@ -1,4 +1,3 @@
-#aqui teria um print com um texto que exprique como uma apostila etc
 import time
 
 

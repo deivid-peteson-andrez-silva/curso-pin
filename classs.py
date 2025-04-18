@@ -68,11 +68,14 @@ class cod:
                 tex=input().strip().lower()
                 if tex== "p":
                     print(codigo)
-                    codigo_str = "\n".join(codigo)
-                    exec(codigo_str)
+                    codigo_rodar = "\n".join(codigo)
+                    exec(codigo_rodar)
                     break
-                elif tex == 'del':
+                elif tex == 'dele':
                     del codigo[-1]
+                elif tex == "linpar":
+                    codigo.clear()
+                
                 else:
                     codigo.append(tex)
             except Exception as e:
