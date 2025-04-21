@@ -56,7 +56,65 @@ while True:
     except Exception as e:
         print('codigo errado ')
 """
-'''
+
+
+nome_busca = input("Digite o nome do aluno que quer procurar: ").strip().lower()
+
+for aluno in a.lista_aluno:
+    if aluno["nome"] == nome_busca:
+        print(f"Aluno encontrado! ID: {aluno['id']}, Idade: {aluno['idade']} anos")
+        '''
 from classs import aluno
-alunoo =aluno()
-alunoo.deletar_aluno()
+a = aluno()
+'''
+while True:
+
+    aluno_email = input('qual e sel email')
+    aluno_encontrado = None
+    for aluno in self.lista_aluno :
+        if aluno['email'] == aluno_email:
+            aluno_encontrado = aluno
+            break
+               
+    if aluno_encontrado:
+        while True:   
+            senha_av = input('insira sua senha')
+            if senha_av == aluno_encontrado['senha']:
+                print('Login realizado ')
+                operacao = input('oque voce deseja alterar\n1 nome\n2 idade\n3 email\n4 senha\n')
+                if operacao == '1':
+                    novo_nome == input('Digite o novo nome  ')
+                    aluno_encontrado['nome'] = novo_nome
+                elif operacao == '2':
+                    nova_idade == inpot('Digite a nova idade  ')
+                    aluno_encontrado['idade'] == nova_idade
+                elif operacao == '3':
+                    novo_email['Digite o novo email']
+                    if '@' in novo_email and '.' in novo_email :
+                        aluno_encontrado['email'] == novo_email
+                elif operacao == '4':
+                    while True:
+                        nova_senha  = input('sua senha incluir numero e caracter especial  ')
+                        tem_especial = '!@#$%&*_+*/-+[]{^}~ç:.,<>\?;|'
+                        tem_especial = any(char in especiais for char in senha)
+                        tem_numero = any(char.isdigit() for char in nova_senha)
+                        if  iss and tem_numero: 
+                            aluno_encontrado['senha'] = nova_senha 
+                            break
+                        else:
+                            print('senha invalida')
+                
+                    with open('arquivos/dados.json', 'w') as arquivo:
+                        json.dump(self.lista_aluno, arquivo, indent=4)
+
+                    print('Informações atualizadas com sucesso.')                
+                
+                
+                
+                break
+            else:
+                print('senha invalida')
+        break
+    else:
+        print('email nao encontrado.')
+'''

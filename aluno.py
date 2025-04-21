@@ -16,13 +16,15 @@ from classs import aluno
 #por enquanto pra cadastrar e deletar aluno nao mexe no codigo mas cadastra uns alunos ai
 
 a = aluno()
-cadastro = input('que cadastrar um aluno s/n ').lower().strip()
+cadastro = input('quer cadastrar um aluno s/n ').lower().strip()
 if cadastro =='s':
     a.cadastro() 
-dell = input('quer deletar um aluno usando o id s/n')
+dell = input('quer deletar um aluno usando o id s/n ').lower().strip()
 if dell == 's':
     a.deletar_aluno()
-    
+altera = input('quer alterar suas informaçoes  s/n ')
+if altera == 's'   :
+    a.alterar()
 # vc pode mudar apartir da qui
 print(a.lista_aluno)
 #esse e o nome da variavel que ta os cadastros, e como se fosse lista_aluno[] que vc viu na aula 
