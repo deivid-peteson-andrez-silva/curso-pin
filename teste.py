@@ -118,3 +118,22 @@ while True:
     else:
         print('email nao encontrado.')
 '''
+import time
+from classs import aluno
+a= aluno()
+# Salva o tempo inicial
+
+a.deletar_aluno()
+inicio = time.perf_counter()
+
+if a.logar():
+    print('logol')
+
+# Salva o tempo final
+fim = time.perf_counter()
+
+# Calcula a duração em minutos
+duracao_minutos = (fim - inicio) / 60
+
+# Mostra o tempo em minutos
+print(f"Você demorou {duracao_minutos:.2f} minutos para digitar.")

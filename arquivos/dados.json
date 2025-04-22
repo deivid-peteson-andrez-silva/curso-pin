@@ -14,17 +14,35 @@
         "senha": "adm123@"
     },
     {
-        "id": 7,
-        "nome": "Vit\u00f3ria Andrez",
-        "idade": "28",
-        "email": "vick@gmail.com",
-        "senha": "Asenhaesenha1.&"
-    },
-    {
         "id": 8,
         "nome": "peterson",
         "idade": "12",
         "email": "de@gmail.com",
         "senha": "adm123&"
+    },
+    {
+        "id": 9,
+        "nome": "andrez",
+        "idade": "28",
+        "email": "andrez@gmai.com",
+        "senha": "adm123@",
+        "acesso": 2
+    },
+    {
+        "id": 10,
+        "nome": "Vit\\u00f3ria Andrez",
+        "idade": "28",
+        "email": "vick@gmail.com",
+        "senha": "Asenhaesenha1.&",
+        "acesso": 1
+    },
+    {
+        "id": 11,
+        "nome": "silva",
+        "idade": "87",
+        "email": "silva@.com",
+        "senha": "adm123$",
+        "acesso": 4,
+        "temp_acesso": 0.1881943916659414
     }
 ]

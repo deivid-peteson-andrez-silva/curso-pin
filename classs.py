@@ -45,11 +45,15 @@ class aluno:
             else:
                 print('senha invalida')
 
+        acesso = int(0)    
+        temp_acesso = int(0)
         alunos= {'id':numaluno,
                 "nome":nome,
                 'idade':idade,
                 'email':email,
-                'senha':senha
+                'senha':senha,
+                'acesso':acesso,
+                'temp_acesso':temp_acesso
                 }
         self.lista_aluno.append(alunos)
         with open('arquivos/dados.json','w') as arquivo:
@@ -75,11 +79,49 @@ class aluno:
 
             print(f"Aluno com ID {id_deletar} foi deletado com sucesso.")
 
+    def logar(self):
+        aluno_email = input('qual e sel email ')
+        aluno_encontrado = None
+        for aluno in self.lista_aluno :
+            if aluno['email'] == aluno_email:
+                aluno_encontrado = aluno
+                break
+                
+        if aluno_encontrado:
+            while True:   
+                senha_av = input('insira sua senha')
+                if senha_av == aluno_encontrado['senha']:
+                    print('Login realizado ')
+
+                    aluno_encontrado['acesso'] +=1 
+                    with open('arquivos/dados.json', 'w') as arquivo:
+                        json.dump(self.lista_aluno, arquivo, indent=4)
+
+                    return aluno_email
+                    break
+                else:
+                    print('senha invalida')
+       
+        else:
+            print('email nao encontrado.')
+    
+    
+    def registrar_tempo(self,email,tempo):
+            for aluno in self.lista_aluno:
+                if aluno['email'] == email:
+                    aluno['temp_acesso'] += tempo
+                    break
+            with open('arquivos/dados.json', 'w') as arquivo:
+                json.dump(self.lista_aluno, arquivo, indent=4)
+
+    
+    
+    
     def alterar(self):
                 
         while True:
 
-            aluno_email = input('qual e sel email')
+            aluno_email = input('qual e sel email ')
             aluno_encontrado = None
             for aluno in self.lista_aluno :
                 if aluno['email'] == aluno_email:
@@ -88,7 +130,7 @@ class aluno:
                     
             if aluno_encontrado:
                 while True:   
-                    senha_av = input('insira sua senha')
+                    senha_av = input('insira sua senha ')
                     if senha_av == aluno_encontrado['senha']:
                         print('Login realizado ')
                         operacao = input('oque voce deseja alterar\n1 nome\n2 idade\n3 email\n4 senha\n')
@@ -100,7 +142,7 @@ class aluno:
                             aluno_encontrado['idade'] = nova_idade
                         elif operacao == '3':
                             while True:    
-                                novo_email = input('Digite o novo email')
+                                novo_email = input('Digite o novo email ')
                                 if '@' in novo_email and '.' in novo_email :
                                     aluno_encontrado['email'] = novo_email
                                     break
