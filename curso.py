@@ -4,7 +4,7 @@ from classs import aluno
 quant_per = 1    
 acertos = 0
 curso = aluno()
-
+curso.cadastro()
 aluno_email = curso.logar()
 if aluno_email:
     inicio = time.perf_counter()
