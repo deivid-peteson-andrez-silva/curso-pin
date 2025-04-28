@@ -1,37 +1,35 @@
 import time
 from classs import cod 
 from classs import aluno
-quant_per = 1    
+from quiz import Quiz
+quant_per = 10    
 acertos = 0
 curso = aluno()
-curso.cadastro()
 aluno_email = curso.logar()
 if aluno_email:
     inicio = time.perf_counter()
-    
-    print('Para que serve a função print() na linguagem Python? ')
+    quiz = Quiz()
+    perguntas_selecionadas = quiz.selecionar_perguntas()
 
-    print('''
-        a ) Para receber dados do usuário durante a execução do programa.
-        b ) Para exibir mensagens, valores de variáveis ou resultados no console.
-        c ) Para realizar cálculos matemáticos complexos.
-        d ) Para armazenar dados em arquivos no sistem 
-        
-        ''')
+    # Lógica para exibir as perguntas
+    inicio = time.perf_counter()
 
-    resposta = input('qual e a resposta certa: ').lower().strip()
+    for i, (pergunta, resposta_correta) in enumerate(perguntas_selecionadas, 1):
+        print(f'Pergunta {i}: {pergunta}')
+        resposta = input('Qual é a sua resposta: ').lower().strip()
 
-    if resposta != 'b' :
-        print('a resposta certa e b a função print exibi mensagens na tela\n')
-    else:
-        print('certa resposta\n')
-        acertos+=1
-        
+        if resposta == resposta_correta:
+            print('Certa resposta!\n')
+            acertos += 1
+        else:
+            print(f'A resposta certa é {resposta_correta}.\n')
     media= acertos/quant_per*10
 
 
     cod('use a função print pra exibir hola mundo\n')
     fim = time.perf_counter()
     temp_acesso = (fim - inicio) / 60
+    temp_acesso =round(temp_acesso, 2)
     
     curso.registrar_tempo(aluno_email, temp_acesso)
+    curso.registrar_nota(aluno_email, acertos)
