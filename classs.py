@@ -47,13 +47,15 @@ class aluno:
 
         acesso = int(0)    
         temp_acesso = int(0)
+        nota = int(0)
         alunos= {'id':numaluno,
                 "nome":nome,
                 'idade':idade,
                 'email':email,
                 'senha':senha,
                 'acesso':acesso,
-                'temp_acesso':temp_acesso
+                'temp_acesso':temp_acesso,
+                'nota':nota
                 }
         self.lista_aluno.append(alunos)
         with open('arquivos/dados.json','w') as arquivo:
@@ -113,7 +115,14 @@ class aluno:
                     break
             with open('arquivos/dados.json', 'w') as arquivo:
                 json.dump(self.lista_aluno, arquivo, indent=4)
-
+    
+    def registrar_nota(self,email,nota):
+        for aluno in self.lista_aluno:
+            if aluno['email'] == email:
+                aluno['nota'] += nota
+                break
+        with open('arquivos/dados.json', 'w') as arquivo:
+            json.dump(self.lista_aluno, arquivo, indent=4)
     
     
     
