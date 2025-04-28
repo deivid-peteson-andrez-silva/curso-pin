@@ -44,14 +44,5 @@
         "senha": "adm123$",
         "acesso": 4,
         "temp_acesso": 0.1881943916659414
-    },
-    {
-        "id": 12,
-        "nome": "ddd",
-        "idade": "55",
-        "email": "dede@.dede",
-        "senha": "adm123@",
-        "acesso": 0,
-        "temp_acesso": 0
     }
 ]
