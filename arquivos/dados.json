@@ -54,5 +54,15 @@
         "acesso": 3,
         "temp_acesso": 2.4099999999999997,
         "nota": 14
+    },
+    {
+        "id": 13,
+        "nome": "andrez",
+        "idade": "25",
+        "email": "andrez@gmail.com",
+        "senha": "adm123@",
+        "acesso": 0,
+        "temp_acesso": 0,
+        "nota": 0
     }
 ]
