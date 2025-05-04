@@ -47,7 +47,8 @@ class aluno:
 
         acesso = int(0)    
         temp_acesso = int(0)
-        nota = int(0)
+        nota =[]
+        media_nota=0
         alunos= {'id':numaluno,
                 "nome":nome,
                 'idade':idade,
@@ -55,6 +56,7 @@ class aluno:
                 'senha':senha,
                 'acesso':acesso,
                 'temp_acesso':temp_acesso,
+                'media_nota':media_nota,
                 'nota':nota
                 }
         self.lista_aluno.append(alunos)
@@ -111,7 +113,7 @@ class aluno:
     def registrar_tempo(self,email,tempo):
             for aluno in self.lista_aluno:
                 if aluno['email'] == email:
-                    aluno['temp_acesso'] += tempo
+                    aluno['temp_acesso']= round(aluno['temp_acesso'] + tempo, 2)
                     break
             with open('arquivos/dados.json', 'w') as arquivo:
                 json.dump(self.lista_aluno, arquivo, indent=4)
@@ -119,7 +121,15 @@ class aluno:
     def registrar_nota(self,email,nota):
         for aluno in self.lista_aluno:
             if aluno['email'] == email:
-                aluno['nota'] += nota
+                nova_nota= aluno['nota']
+                nova_nota.append(nota)
+                aluno['nota']=nova_nota
+                for i in nova_nota:
+                    media= nova_nota
+                    quan = len(nova_nota)
+                    soma = sum(nova_nota)
+                    media = soma/quan
+                    aluno['media_nota']= media
                 break
         with open('arquivos/dados.json', 'w') as arquivo:
             json.dump(self.lista_aluno, arquivo, indent=4)

@@ -23,10 +23,11 @@ if aluno_email:
             acertos += 1
         else:
             print(f'A resposta certa é {resposta_correta}.\n')
-    media= acertos/quant_per*10
 
 
     cod('use a função print pra exibir hola mundo\n')
+    
+    curso.registrar_nota(aluno_email,acertos)
     fim = time.perf_counter()
     temp_acesso = (fim - inicio) / 60
     temp_acesso =round(temp_acesso, 2)
