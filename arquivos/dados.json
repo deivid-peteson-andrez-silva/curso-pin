@@ -5,9 +5,23 @@
         "idade": "20",
         "email": "deivid@gmail.com",
         "senha": "adm123@",
-        "acesso": 0,
+        "acesso": 3,
         "temp_acesso": 0,
         "media_nota": 0,
         "nota": []
+    },
+    {
+        "id": 2,
+        "nome": "b",
+        "idade": "b",
+        "email": "b",
+        "senha": "b",
+        "acesso": 3,
+        "temp_acesso": 1.14,
+        "media_nota": 3.5,
+        "nota": [
+            4,
+            3
+        ]
     }
 ]

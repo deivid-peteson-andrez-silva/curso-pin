@@ -14,18 +14,18 @@ e ) Para realizar operações matemáticas.
 ''', "b"),
                 ('''Quando o bloco if é executado em Python?
 a ) Sempre que o programa inicia.
-b ) Quando a condição especificada for verdadeira.
+b ) Quando o programa fecha.
 c ) Quando uma variável for criada.
-d ) Quando o usuário pressiona Enter.
-e ) Quando o programa fecha.
-''', "b"),
+d ) Quando a condição especificada for verdadeira.
+e ) Quando o usuário pressiona Enter.
+''', "d"),
                 ('''Qual operador é usado para comparar igualdade em um if?
 a ) +
-b ) ==
-c ) =
-d ) !=
-e ) <>
-''', "b"),
+b ) =
+c ) !=
+d ) <>
+e ) ==
+''', "e"),
                 ('''Qual palavra é usada junto com if para oferecer uma alternativa?
 a ) while
 b ) for
@@ -43,33 +43,33 @@ e ) A variável é redefinida.
             ],
             'for': [
                 ('''Para que serve a estrutura for na linguagem Python?
-a ) Para declarar variáveis.
-b ) Para repetir blocos de código em uma sequência.
+a ) Para repetir blocos de código em uma sequência.
+b ) Para declarar variáveis.
 c ) Para comparar duas condições.
 d ) Para receber dados do usuário.
 e ) Para criar novas funções.
-''', "b"),
+''', "a"),
                 ('''Qual função é mais usada junto com for para criar uma sequência de números?
 a ) input()
-b ) range()
-c ) str()
+b ) str()
+c ) range()
 d ) print()
 e ) int()
-''', "b"),
+''', "c"),
                 ('''O que o comando for x in range(5): faz?
 a ) Cria uma variável com valor 5.
-b ) Repete o bloco de código 5 vezes.
+b ) Cria uma função chamada x.
 c ) Exibe 5 mensagens de erro.
 d ) Lê 5 entradas do usuário.
-e ) Cria uma função chamada x.
-''', "b"),
+e ) Repete o bloco de código 5 vezes.
+''', "e"),
                 ('''O que acontece se usamos break dentro de um for?
 a ) O loop é ignorado.
-b ) O loop é interrompido imediatamente.
+b ) Nada acontece.
 c ) O loop é reiniciado.
 d ) Um erro é gerado.
-e ) Nada acontece.
-''', "b"),
+e ) O loop é interrompido imediatamente.
+''', "e"),
                 ('''Qual estrutura o for geralmente percorre?
 a ) Strings, listas ou intervalos de números.
 b ) Funções e classes.
@@ -126,10 +126,10 @@ e ) Sem nenhum símbolo especial.
                 ('''Qual exemplo representa uma string válida?
 a ) 1234
 b ) True
-c ) "Olá Mundo"
-d ) 45.6
+c ) 45.6
+d ) "Olá Mundo"
 e ) None
-''', "c"),
+''', "d"),
                 ('''O que acontece se esquecermos as aspas na declaração de uma string?
 a ) O Python ignora.
 b ) Um erro de sintaxe acontece.
@@ -156,10 +156,10 @@ e ) input()
                 ('''Para que serve uma função em Python?
 a ) Para repetir loops.
 b ) Para armazenar dados.
-c ) Para agrupar códigos que podem ser reutilizados.
-d ) Para criar listas.
+c ) Para criar listas.
+d ) Para agrupar códigos que podem ser reutilizados.
 e ) Para definir variáveis automaticamente.
-''', "c"),
+''', "d"),
                 ('''Como se declara uma função em Python?
 a ) usando function
 b ) usando def

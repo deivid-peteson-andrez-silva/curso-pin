@@ -15,27 +15,24 @@ class aluno:
         else:
             self.lista_aluno = []
     
-    def cadastro(self):    
+    def cadastro(self,nome,idade,email_n,senha_n):    
  
         if self.lista_aluno:
             ids_existentes = [aluno['id'] for aluno in self.lista_aluno]
             numaluno = max(ids_existentes) + 1
         else:
           numaluno = 1
-        nome   = input('seu nome  ')
-        idade  = input('sua idade  ')
         
         while True:
-            email_n  = input('seu email  ') 
             if '@' in email_n and '.' in email_n :
                 email = email_n
                 break
             else:
                 print('email invalido ')
+                email_n  = input('seu email  ') 
        
 
         while True:
-            senha_n  = input('sua senha incluir numero e caracter especial como @#$%&  ')
             especiais = r'!@#$%&*_+*/-+[]{^}~ç:.,<>\?;|'
             tem_especial = any(char in especiais for char in senha_n)
             tem_numero = any(char.isdigit() for char in senha_n)
@@ -44,6 +41,7 @@ class aluno:
                 break
             else:
                 print('senha invalida')
+                senha_n  = input('sua senha incluir numero e caracter especial como @#$%&  ')
 
         acesso = int(0)    
         temp_acesso = int(0)
@@ -83,31 +81,32 @@ class aluno:
 
             print(f"Aluno com ID {id_deletar} foi deletado com sucesso.")
 
-    def logar(self):
-        aluno_email = input('qual e sel email ')
+    def logar(self,senha_av,aluno_email):
         aluno_encontrado = None
-        for aluno in self.lista_aluno :
-            if aluno['email'] == aluno_email:
-                aluno_encontrado = aluno
-                break
-                
-        if aluno_encontrado:
-            while True:   
-                senha_av = input('insira sua senha')
-                if senha_av == aluno_encontrado['senha']:
-                    print('Login realizado ')
-
-                    aluno_encontrado['acesso'] +=1 
-                    with open('arquivos/dados.json', 'w') as arquivo:
-                        json.dump(self.lista_aluno, arquivo, indent=4)
-
-                    return aluno_email
+        while True:   
+            for aluno in self.lista_aluno :
+                if aluno['email'] == aluno_email:
+                    aluno_encontrado = aluno
                     break
-                else:
-                    print('senha invalida')
-       
-        else:
-            print('email nao encontrado.')
+                    
+            if aluno_encontrado:
+                while True:   
+                    if senha_av == aluno_encontrado['senha']:
+                        print('Login realizado ')
+
+                        aluno_encontrado['acesso'] +=1 
+                        with open('arquivos/dados.json', 'w') as arquivo:
+                            json.dump(self.lista_aluno, arquivo, indent=4)
+
+                        return aluno_email
+                        break
+                    else:
+                        print('senha invalida')
+                        senha_av = input('insira sua senha')
+        
+            else:
+                print('email nao encontrado.')
+                aluno_email = input('qual e sel email ')
     
     
     def registrar_tempo(self,email,tempo):
