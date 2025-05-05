@@ -1,8 +1,9 @@
 import time
 import json
 import os
-
-class aluno:
+import  hashlib
+import bcrypt
+class Aluno:
     def __init__(self):
         if os.path.exists('arquivos/dados.json'):
             with open('arquivos/dados.json', 'r') as arquivo:
@@ -51,7 +52,7 @@ class aluno:
                 "nome":nome,
                 'idade':idade,
                 'email':email,
-                'senha':senha,
+                'senha':bcrypt.hashpw(senha.encode(), bcrypt.gensalt()).decode(),
                 'acesso':acesso,
                 'temp_acesso':temp_acesso,
                 'media_nota':media_nota,
@@ -83,30 +84,31 @@ class aluno:
 
     def logar(self,senha_av,aluno_email):
         aluno_encontrado = None
-        while True:   
-            for aluno in self.lista_aluno :
-                if aluno['email'] == aluno_email:
-                    aluno_encontrado = aluno
-                    break
-                    
-            if aluno_encontrado:
-                while True:   
-                    if senha_av == aluno_encontrado['senha']:
-                        print('Login realizado ')
 
-                        aluno_encontrado['acesso'] +=1 
-                        with open('arquivos/dados.json', 'w') as arquivo:
-                            json.dump(self.lista_aluno, arquivo, indent=4)
+        for aluno in self.lista_aluno :
+            if aluno['email'] == aluno_email:
+                aluno_encontrado = aluno
+                break
+                
+        if not aluno_encontrado:
 
-                        return aluno_email
-                        break
-                    else:
-                        print('senha invalida')
-                        senha_av = input('insira sua senha')
-        
-            else:
-                print('email nao encontrado.')
-                aluno_email = input('qual e sel email ')
+            print('Email não encontrado.')
+            return None
+    
+        if bcrypt.checkpw(senha_av.encode(), aluno_encontrado['senha'].encode()):
+            print('Login realizado ')
+
+            aluno_encontrado['acesso'] +=1 
+            with open('arquivos/dados.json', 'w') as arquivo:
+                json.dump(self.lista_aluno, arquivo, indent=4)
+
+            return aluno_email
+ 
+        else:
+            print('senha invalida')
+            return None
+
+
     
     
     def registrar_tempo(self,email,tempo):
@@ -123,74 +125,61 @@ class aluno:
                 nova_nota= aluno['nota']
                 nova_nota.append(nota)
                 aluno['nota']=nova_nota
-                for i in nova_nota:
-                    media= nova_nota
-                    quan = len(nova_nota)
-                    soma = sum(nova_nota)
-                    media = soma/quan
-                    aluno['media_nota']= media
+
+                media= nova_nota
+                quan = len(nova_nota)
+                soma = sum(nova_nota)
+                media = soma/quan
+                aluno['media_nota']= media
                 break
         with open('arquivos/dados.json', 'w') as arquivo:
             json.dump(self.lista_aluno, arquivo, indent=4)
-    
-    
-    
-    def alterar(self):
-                
-        while True:
 
-            aluno_email = input('qual e sel email ')
-            aluno_encontrado = None
-            for aluno in self.lista_aluno :
-                if aluno['email'] == aluno_email:
-                    aluno_encontrado = aluno
-                    break
-                    
-            if aluno_encontrado:
-                while True:   
-                    senha_av = input('insira sua senha ')
-                    if senha_av == aluno_encontrado['senha']:
-                        print('Login realizado ')
-                        operacao = input('oque voce deseja alterar\n1 nome\n2 idade\n3 email\n4 senha\n')
-                        if operacao == '1':
-                            novo_nome = input('Digite o novo nome  ')
-                            aluno_encontrado['nome'] = novo_nome
-                        elif operacao == '2':
-                            nova_idade = input('Digite a nova idade  ')
-                            aluno_encontrado['idade'] = nova_idade
-                        elif operacao == '3':
-                            while True:    
-                                novo_email = input('Digite o novo email ')
-                                if '@' in novo_email and '.' in novo_email :
-                                    aluno_encontrado['email'] = novo_email
-                                    break
-                                else:
-                                    print('email invalido')
-                        elif operacao == '4':
-                            while True:
-                                nova_senha  = input('sua senha incluir numero e caracter especial  ')
-                                especiais = r'!@#$%&*_+*/-+[]{^}~ç:.,<>\?;|'
-                                tem_especial = any(char in especiais for char in nova_senha)
-                                tem_numero = any(char.isdigit() for char in nova_senha)
-                                if  tem_especial and tem_numero: 
-                                    aluno_encontrado['senha'] = nova_senha 
-                                    break
-                                else:
-                                    print('senha invalida')
-                        
-                        with open('arquivos/dados.json', 'w') as arquivo:
-                            json.dump(self.lista_aluno, arquivo, indent=4)
-
-                        print('Informações atualizadas com sucesso.')                
-                        break
-                    else:
-                        print('senha invalida')
+    
+    def alterar(self,operacao,aluno_email_logar):
+        
+        aluno_email = aluno_email_logar
+        for aluno in self.lista_aluno :
+            if aluno['email'] == aluno_email:
+                aluno_encontrado = aluno
                 break
-            else:
-                print('email nao encontrado.')
+                    
+
+        if operacao == 1:
+            novo_nome = input('Digite o novo nome  ')
+            aluno_encontrado['nome'] = novo_nome
+        elif operacao == 2:
+            nova_idade = input('Digite a nova idade  ')
+            aluno_encontrado['idade'] = nova_idade
+        elif operacao == 3:
+            while True:    
+                novo_email = input('Digite o novo email ')
+                if '@' in novo_email and '.' in novo_email :
+                    aluno_encontrado['email'] = novo_email
+                    break
+                else:
+                    print('email invalido')
+        elif operacao == 4:
+            while True:
+                nova_senha  = input('sua senha incluir numero e caracter especial  ')
+                especiais = r'!@#$%&*_+*/-+[]{^}~ç:.,<>\?;|'
+                tem_especial = any(char in especiais for char in nova_senha)
+                tem_numero = any(char.isdigit() for char in nova_senha)
+                if  tem_especial and tem_numero: 
+                    nova_senha = bcrypt.hashpw(nova_senha.encode(), bcrypt.gensalt()).decode()
+                    aluno_encontrado['senha'] = nova_senha 
+                    break
+                else:
+                    print('senha invalida')
+        
+        with open('arquivos/dados.json', 'w') as arquivo:
+            json.dump(self.lista_aluno, arquivo, indent=4)
+
+        print('Informações atualizadas com sucesso.')                
+  
 
 
-class cod:
+class Cod:
     def __init__(self,texper):
         self.texper=texper
         print(f"{self.texper}\n")

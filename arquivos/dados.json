@@ -4,24 +4,25 @@
         "nome": "deivid",
         "idade": "20",
         "email": "deivid@gmail.com",
-        "senha": "adm123@",
-        "acesso": 3,
-        "temp_acesso": 0,
-        "media_nota": 0,
-        "nota": []
+        "senha": "$2b$12$VN2sLsy0RhjkvQkgZAw7MOzbE4gaVAcJj2KhYy.gV8EvbW3VOZpx.",
+        "acesso": 1,
+        "temp_acesso": 2.44,
+        "media_nota": 5.0,
+        "nota": [
+            4,
+            2,
+            9
+        ]
     },
     {
         "id": 2,
-        "nome": "b",
-        "idade": "b",
-        "email": "b",
-        "senha": "b",
-        "acesso": 3,
-        "temp_acesso": 1.14,
-        "media_nota": 3.5,
-        "nota": [
-            4,
-            3
-        ]
+        "nome": "peterson",
+        "idade": "30",
+        "email": "peterson@gmail.com",
+        "senha": "40028922Ps@",
+        "acesso": 1,
+        "temp_acesso": 0.71,
+        "media_nota": 0,
+        "nota": []
     }
 ]
