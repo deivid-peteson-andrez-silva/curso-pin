@@ -195,7 +195,103 @@ e ) Criando uma variável nova.
         perguntas_selecionadas = []
         # Seleciona 2 perguntas aleatórias de cada tema
         for tema, perguntas in self.perguntas.items():
-            perguntas_selecionadas.extend(random.sample(perguntas, 2))
+            perguntas_selecionadas.extend(random.sample(perguntas,2))
         
         random.shuffle(perguntas_selecionadas)  # Embaralha as perguntas
         return perguntas_selecionadas
+    
+    
+
+class Tarefa_p :
+        
+    def ati(self):
+        atividade_random = [
+            'Como você usaria um if na prática para verificar se uma pessoa pode entrar em um evento com idade mínima de 18 anos?',
+            'Como você usaria o if para decidir se um número é positivo ou negativo?',
+            'Escreva um exemplo usando if para comparar dois números e dizer qual é maior.',
+            'Dê um exemplo de uso de if e else para verificar se um aluno foi aprovado com nota mínima 7',
+            'Descreva como você usaria um if para checar se uma senha digitada está correta.',
+            'Como você usaria um for para imprimir os números de 1 a 10?',
+            'Mostre como você usaria o range() com for para criar uma contagem regressiva de 10 até 1.',
+            'Faça um exemplo de for para exibir cada letra da palavra "Python".',
+            'Explique como você usaria o break para parar um loop quando um número específico for encontrado.',
+            'Dê um exemplo de for para percorrer os itens de uma lista de compras.',
+            'Escreva um exemplo de input() para pedir o nome do usuário.',
+            'Como você converteria a entrada do input() para um número inteiro?',
+            'Faça um exemplo que pede a idade do usuário usando input().',
+            'Mostre como você pediria um número para o usuário e depois somaria 10 a esse número.',
+            'Crie um exemplo onde o usuário digita um número e o programa calcula o dobro.',
+            'Faça um exemplo declarando uma string chamada fruta com valor "maçã".',
+            'Crie uma string que guarde o nome da sua cidade.',
+            'juntar duas strings: nome e sobrenome.'
+            ]
+        
+        atividade_es= random.choice(atividade_random)
+        return atividade_es
+      
+      
+class Apostila:
+    def txt_apos(self,txt_ex):
+        if txt_ex==1:
+            ex_str =  '''
+Em Python, str é o tipo usado para representar textos, ou seja, qualquer sequência de caracteres como
+nomes, frases, letras ou até números escritos como texto. Você pode criar uma string colocando o conteúdo
+entre aspas simples ou duplas, como "Olá" ou 'mundo'. Strings são imutáveis, o que significa que você
+não pode mudar um caractere direto nela depois que foi criada, mas pode gerar uma nova string modificada
+usando métodos como .upper() para deixar tudo em maiúsculo, .lower() para minúsculo, .replace()
+para trocar partes do texto, ou .strip() para remover espaços extras do início e fim. Também é possível
+acessar partes da string usando colchetes com um índice, como texto[0] para pegar o primeiro caractere.
+Para juntar strings, usa-se o operador +, e para inserir valores dentro de um texto, é comum usar f-strings,
+como em f"Olá, {nome}".
+'''
+            return ex_str
+        elif txt_ex ==2:
+            ex_input = '''
+A função input() em Python serve para capturar o que o usuário digita durante a execução do programa.
+Quando input() é chamado, o Python mostra uma mensagem (se você quiser) e espera o usuário digitar
+alguma coisa e apertar Enter. O valor que o usuário digita sempre é retornado como uma string, mesmo que
+ele digite um número. Por isso, se você quiser trabalhar com números, precisa converter esse valor usando
+int() para inteiros ou float() para números com ponto. Essa função é muito usada para tornar
+programas interativos, permitindo que o usuário forneça informações como nome, idade, respostas de um
+quiz, entre outros. Além disso, você pode armazenar esse valor em uma variável para usá-lo depois no seu código.
+            '''
+            return ex_input
+        elif txt_ex ==3:
+            ex_elif = '''
+Em Python, o if é uma estrutura condicional usada para tomar decisões no programa. Ele verifica se uma
+condição é verdadeira e, se for, executa um bloco de código. Caso a condição seja falsa, o código dentro do
+if é ignorado. Isso permite que o programa tenha comportamentos diferentes dependendo dos dados ou
+da situação. É possível adicionar o else para executar um outro bloco quando a condição não for satisfeita,
+ou ainda usar elif para testar outras possibilidades antes de chegar ao else. Essas estruturas tornam o
+programa mais inteligente, permitindo reações diferentes com base nas escolhas do usuário, nos valores das
+variáveis ou em qualquer outra verificação lógica que o programador deseje fazer.
+            '''
+            return ex_elif
+        elif txt_ex == 4:
+            ex_for = '''
+Em Python, o for é usado para repetir um bloco de código várias vezes, percorrendo uma sequência de
+valores, como uma lista, string ou intervalo de números. Cada vez que o laço roda, ele pega um valor da
+sequência e executa o bloco com esse valor. Isso é muito útil quando você quer fazer algo várias vezes de
+forma controlada, como mostrar todos os nomes de uma lista ou contar de 1 a 10. Uma das formas mais
+comuns de usar o for é com a função range(), que gera uma sequência de números. Assim, o for se
+torna uma maneira simples e clara de fazer repetições, evitando códigos repetidos e deixando o programa
+mais organizado.
+            '''
+            return ex_for
+        
+        elif txt_ex == 5:
+            ex_funcao = '''
+Em Python, uma função é um bloco de código que você cria para executar uma tarefa específica. Ela serve
+para organizar o programa, evitar repetição de código e tornar tudo mais fácil de entender e manter. Para
+criar uma função, você usa a palavra-chave def, seguida do nome da função e, entre parênteses, os
+parâmetros que ela pode receber. Dentro da função, você escreve o que ela deve fazer. Quando quiser usar
+essa função, basta "chamar" ela pelo nome.
+
+Por exemplo, você pode criar uma função chamada saudar() que imprime uma mensagem. Depois, sempre
+que quiser dar essa saudação, você chama a função sem precisar reescrever o mesmo código.
+
+Funções também podem receber valores (chamados de parâmetros) e devolver um resultado usando a
+palavra return. Isso deixa o código mais poderoso e flexível, porque você pode fazer a mesma função
+funcionar com dados diferentes.
+            '''
+            return ex_funcao

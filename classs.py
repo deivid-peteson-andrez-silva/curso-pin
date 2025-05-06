@@ -3,6 +3,8 @@ import json
 import os
 import  hashlib
 import bcrypt
+import random
+
 class Aluno:
     def __init__(self):
         if os.path.exists('arquivos/dados.json'):
@@ -186,20 +188,29 @@ class Cod:
         codigo=[]
         while True:
             try:
-                tex=input().strip().lower()
-                if tex== "p":
-                    print(codigo)
-                    codigo_rodar = "\n".join(codigo)
-                    exec(codigo_rodar)
+                tex=input('>>>')
+                if tex== "executar":
+                    print("\nCódigo final:")
+                    print("\n".join(codigo))
+                    print("\nExecutando...\n")
+                    t = random.randint(0, 4) 
+                    time.sleep(t)
+                    exec("\n".join(codigo))
                     break
-                elif tex == 'dele':
-                    del codigo[-1]
-                elif tex == "linpar":
+                elif tex == 'remover':
+                    if codigo:
+                        removido = codigo.pop()
+                        print(f"Linha removida: {removido}")
+                    else:
+                        print("Nenhuma linha para remover.")
+                elif tex == "limpar":
+                    print("Código limpo.")
                     codigo.clear()
-                
+                elif tex == "sair":
+                    print("Saindo sem executar.")
+                    break
                 else:
                     codigo.append(tex)
             except Exception as e:
-                print(f'codigo errado {e}\n ')
-                time.sleep(2)            
-
+                print(f'Código errado: {e}\n')
+                time.sleep(2)

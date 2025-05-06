@@ -2,16 +2,18 @@
     {
         "id": 1,
         "nome": "deivid",
-        "idade": "20",
+        "idade": "21",
         "email": "deivid@gmail.com",
-        "senha": "$2b$12$VN2sLsy0RhjkvQkgZAw7MOzbE4gaVAcJj2KhYy.gV8EvbW3VOZpx.",
-        "acesso": 1,
-        "temp_acesso": 2.44,
-        "media_nota": 5.0,
+        "senha": "$2b$12$nf.lpY5281Cq1w2fLPoDbevwWIAkawLG8j2hN/asb2t3AigzU0wDa",
+        "acesso": 17,
+        "temp_acesso": 8.47,
+        "media_nota": 4.4,
         "nota": [
             4,
             2,
-            9
+            9,
+            3,
+            4
         ]
     },
     {
