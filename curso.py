@@ -1,6 +1,6 @@
 import time
-from classs import Cod 
-from classs import Aluno
+from classes import Cod 
+from classes import Aluno
 from quiz import Quiz
 from quiz import Tarefa_p
 from quiz import Apostila
