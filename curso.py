@@ -9,11 +9,11 @@ from quiz import Apostila
 quant_per = 10    
 acertos = 0
 curso = Aluno()
-tarefa= input('\n1 cadastrar\n2 logar\n')
+tarefa= input('\n1 cadastrar\n2 logar\n  ')
 
 if tarefa == '1' :
     nome   = input('seu nome  ')
-    idade  = input('sua idade  ')
+    idade  = int(input('sua idade  '))
     email_n  = input('seu email  ') 
     senha_n  = input('sua senha incluir numero e caracter especial como @#$%&  ')
     curso.cadastro(nome,idade,email_n,senha_n)

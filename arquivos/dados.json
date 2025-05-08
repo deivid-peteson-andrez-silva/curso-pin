@@ -26,5 +26,29 @@
         "temp_acesso": 0.71,
         "media_nota": 0,
         "nota": []
+    },
+    {
+        "id": 3,
+        "nome": "andrez",
+        "idade": "26",
+        "email": "andrez@gmail.com",
+        "senha": "$2b$12$3aBLD0z8N2yCwZT1N5Li6.3YQNNgjTSuHZlR4Ww.aHjhkL9kK6yn2",
+        "acesso": 0,
+        "temp_acesso": 0,
+        "media_nota": 0,
+        "nota": []
+    },
+    {
+        "id": 4,
+        "nome": "silva",
+        "idade": 65,
+        "email": "silva@gmail.com",
+        "senha": "$2b$12$KkiiO7ytBkcaC.BnT.Ysp.sWcqOmnapbnWHwabO1XtWLoe2pXE1ya",
+        "acesso": 3,
+        "temp_acesso": 0.98,
+        "media_nota": 3.0,
+        "nota": [
+            3
+        ]
     }
 ]

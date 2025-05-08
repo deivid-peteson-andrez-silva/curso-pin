@@ -151,7 +151,7 @@ class Aluno:
             novo_nome = input('Digite o novo nome  ')
             aluno_encontrado['nome'] = novo_nome
         elif operacao == 2:
-            nova_idade = input('Digite a nova idade  ')
+            nova_idade = int(input('Digite a nova idade  '))
             aluno_encontrado['idade'] = nova_idade
         elif operacao == 3:
             while True:    
