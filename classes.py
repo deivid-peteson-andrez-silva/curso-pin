@@ -148,7 +148,7 @@ class Aluno:
                     
 
         if operacao == 1:
-            novo_nome = input('Digite o novo nome  ')
+            novo_nome = input('Digite o novo nome   ')
             aluno_encontrado['nome'] = novo_nome
         elif operacao == 2:
             nova_idade = int(input('Digite a nova idade  '))

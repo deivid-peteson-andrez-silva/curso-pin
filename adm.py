@@ -139,7 +139,7 @@ def janela_login(tela1_f):
         def codar():
             texper = texper = caixa.get("0.0", "end")
             Cod(texper)
-        botao = customtkinter.CTkButton(atividade, text='rodar', command=codar)
+        botao = customtkinter.CTkButton(atividade, text='rodar ', command=codar)
         botao.pack(padx=10, pady=10 )
         
         atividade.mainloop()
