@@ -33,7 +33,7 @@
         "idade": "26",
         "email": "andrez@gmail.com",
         "senha": "$2b$12$3aBLD0z8N2yCwZT1N5Li6.3YQNNgjTSuHZlR4Ww.aHjhkL9kK6yn2",
-        "acesso": 0,
+        "acesso": 3,
         "temp_acesso": 0,
         "media_nota": 0,
         "nota": []
@@ -44,11 +44,22 @@
         "idade": 65,
         "email": "silva@gmail.com",
         "senha": "$2b$12$KkiiO7ytBkcaC.BnT.Ysp.sWcqOmnapbnWHwabO1XtWLoe2pXE1ya",
-        "acesso": 3,
+        "acesso": 4,
         "temp_acesso": 0.98,
         "media_nota": 3.0,
         "nota": [
             3
         ]
+    },
+    {
+        "id": 5,
+        "nome": "d",
+        "idade": "4",
+        "email": "e@.",
+        "senha": "$2b$12$cEe8s1NUoAwfc3Ef1Eplk.d44TidF1BvmCt7biCuTQ2HLtBPm7zpq",
+        "acesso": 14,
+        "temp_acesso": 0,
+        "media_nota": 0,
+        "nota": []
     }
 ]
