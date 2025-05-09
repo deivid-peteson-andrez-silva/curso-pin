@@ -1,61 +1,183 @@
-import tkinter as tk
-from tkinter import font
-import sys
-import io
+import time
+from classes import Cod 
+from classes import Aluno
+from quiz import Quiz
+from quiz import Tarefa_p
+from quiz import Apostila
+import customtkinter
+curso=Aluno()
+customtkinter.set_appearance_mode('dark')
+customtkinter.set_default_color_theme("dark-blue")
 
-class ExecPythonApp:
-    def __init__(self, root):
-        self.root = root
-        self.root.title("Cod")
-        self.root.geometry("700x600")
-        self.root.configure(bg="#f5f5f5")
 
-        # Fontes personalizadas
-        self.font_label = font.Font(family="Segoe UI", size=12, weight="bold")
-        self.font_code = font.Font(family="Consolas", size=11)
+def tela1():
 
-        # Título
-        tk.Label(root, text=" Digite seu código Python:", font=self.font_label, bg="#f5f5f5", anchor="w").pack(padx=20, pady=(20, 5), fill="x")
+    janela = customtkinter.CTk()
+    janela.geometry('500x300')
 
-        # Caixa de texto para código
-        self.codigo_text = tk.Text(root, height=12, width=80, font=self.font_code, bd=2, relief="groove", bg="#ffffff")
-        self.codigo_text.pack(padx=20, pady=5, fill="both", expand=True)
+    txt = customtkinter.CTkLabel(janela,text='o que deseja' ,)
 
-        # Botão de execução
-        tk.Button(root, text="▶ Executar Código", font=("Segoe UI", 10), bg="#4CAF50", border=" 10px", fg="white", activebackground="#45a049",
-                  relief="flat", padx=10, pady=6, command=self.executar_codigo).pack(pady=15)
+    botao_cadastro = customtkinter.CTkButton(janela, text='fazer  cadastro', command=lambda:janela_cadastro(janela))
+    botao_cadastro.pack(padx=10, pady=10 )
+    botao_login = customtkinter.CTkButton(janela, text='fazer  login', command=lambda:janela_login(janela))
+    botao_login.pack(padx=10, pady=10 )
+    janela.mainloop()
 
-        # Label de saída
-        tk.Label(root, text="📤 Saída:", font=self.font_label, bg="#f5f5f5", anchor="w").pack(padx=20, pady=(10, 5), fill="x")
+#fun da tela 1 
 
-        # Caixa de texto para saída
-        self.output_text = tk.Text(root, height=10, width=80, font=self.font_code, bg="#eeeeee", bd=2, relief="groove", state='disabled')
-        self.output_text.pack(padx=20, pady=(0, 20), fill="both", expand=True)
+def janela_cadastro(cadastro_f):
+    cadastro_f.destroy()
+    cadastro = customtkinter.CTk()
+    cadastro.geometry('500x300')
+    
+    txt = customtkinter.CTkLabel(cadastro,text='insira seus dados')
+    txt.pack(padx=10, pady=10 )
+    nome_c  = customtkinter.CTkEntry(cadastro, placeholder_text= 'nome')
+    nome_c.pack(padx=10, pady=10 )
+    idade_c  = customtkinter.CTkEntry(cadastro, placeholder_text= 'idade')
+    idade_c.pack(padx=10, pady=10 )
+    email_c  = customtkinter.CTkEntry(cadastro, placeholder_text= 'email')
+    email_c.pack(padx=10, pady=10 )
+    senha_c  = customtkinter.CTkEntry(cadastro, placeholder_text= 'senha')
+    senha_c.pack(padx=10, pady=10 )
+    def cadastrar():
+        nome = nome_c.get()
+        idade = idade_c.get()
+        email = email_c.get()
+        senha = senha_c.get()
+        curso.cadastro(nome,idade,email,senha)
+        tela1()        
+    botao_c = customtkinter.CTkButton(cadastro, text='cadastrar', command=cadastrar)
+    botao_c.pack(padx=10, pady=10 )
+    
+   
+    cadastro.mainloop()
 
-    def executar_codigo(self):
-        codigo = self.codigo_text.get("1.0", tk.END)
+def janela_login(tela1_f):
+    tela1_f.destroy()
+    login = customtkinter.CTk()
+    login.geometry('500x300')
 
-        buffer = io.StringIO()
-        sys_stdout_original = sys.stdout
-        sys_stderr_original = sys.stderr
-        sys.stdout = sys.stderr = buffer
+    txt = customtkinter.CTkLabel(login,text='insira seus dados')
+    txt.pack(padx=10, pady=10 )
 
-        try:
-            exec(codigo, {})  # Executa código em escopo isolado
-        except Exception as e:
-            print(f"Erro: {e}")
-        finally:
-            sys.stdout = sys_stdout_original
-            sys.stderr = sys_stderr_original
-  
-        resultado = buffer.getvalue()
-        self.output_text.config(state='normal')
-        self.output_text.delete("1.0", tk.END)
-        self.output_text.insert(tk.END, resultado)
-        self.output_text.config(state='disabled')
+    aluno_email = customtkinter.CTkEntry(login, placeholder_text= 'seu email')
+    aluno_email.pack(padx=10, pady=10 )
 
-# Roda a aplicação
-if __name__ == "__main__":
-    root = tk.Tk()
-    app = ExecPythonApp(root)
-    root.mainloop()
+
+    senha_av  = customtkinter.CTkEntry(login, placeholder_text= 'seu senha')
+    senha_av.pack(padx=10, pady=10 )
+
+    def tarefa_tela():
+        login.destroy()
+        tarefa_tela = customtkinter.CTk()
+        tarefa_tela.geometry('700x500')
+        
+        botao = customtkinter.CTkButton(tarefa_tela, text='atividade', command=lambda:atividade(tarefa_tela))
+        botao.pack(padx=10, pady=10 )
+        
+        botao = customtkinter.CTkButton(tarefa_tela, text='apostila', command=lambda:apostila(tarefa_tela))
+        botao.pack(padx=10, pady=10 )
+               
+        
+        tarefa_tela.mainloop()
+    
+    def apostila(tarefa_f):
+        tarefa_f.destroy()
+        apostila = customtkinter.CTk()
+        apostila.geometry('700x500')
+        
+        apos = Apostila()
+        txt = customtkinter.CTkLabel(apostila,text='sobre o que deseja saber')
+        txt.pack(padx=10, pady=10 )        
+        botoes = [
+            ("String", 1),
+            ("Input", 2),
+            ("If/Else", 3),
+            ("For", 4),
+            ("Função", 5),
+        ]
+        def apostila_mostrar(txt_ex):
+            apostila.destroy()
+            apostila_mostrar = customtkinter.CTk()
+            apostila_mostrar.geometry('700x500')
+        
+            txt =    apos.txt_apos(txt_ex)
+            txt = customtkinter.CTkLabel(apostila_mostrar,text=txt)
+            txt.pack(padx=10, pady=10 )  
+
+        
+            apostila_mostrar.mainloop()
+
+        for nome, id_tema in botoes:
+            b = customtkinter.CTkButton(apostila, text=nome, command=lambda i=id_tema: apostila_mostrar(i))
+            b.pack(padx=10, pady=10)
+
+        
+                    
+        
+        apostila.mainloop()
+        
+
+        
+
+    
+    
+    
+    def atividade(login):
+        login.destroy()
+        atividade = customtkinter.CTk()
+        atividade.geometry('700x500')
+        
+        a = Tarefa_p()
+        txt = customtkinter.CTkLabel(atividade,text=a.ati())
+        txt.pack(padx=10, pady=10 )
+        
+        caixa = customtkinter.CTkTextbox(atividade, width=300, height=200)
+        caixa.pack(padx=10, pady=10)
+        
+        def codar():
+            texper = texper = caixa.get("0.0", "end")
+            Cod(texper)
+        botao = customtkinter.CTkButton(atividade, text='rodar', command=codar)
+        botao.pack(padx=10, pady=10 )
+        
+        atividade.mainloop()
+    def clik():
+        email = aluno_email.get()
+        senha = senha_av.get()
+        aluno_email_logar = curso.logar(senha,email)
+        if aluno_email_logar:
+            tarefa_tela()
+        
+    botao = customtkinter.CTkButton(login, text='login', command=clik)
+    botao.pack(padx=10, pady=10 )
+    
+        
+        
+
+   
+   
+    
+    
+
+
+    login.mainloop()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+tela1()
