@@ -31,7 +31,7 @@ class Aluno:
                 email = email_n
                 break
             else:
-                print('email invalido ')
+                print('email inválido ')
                 email_n  = input('seu email  ') 
        
 
@@ -43,8 +43,8 @@ class Aluno:
                 senha=senha_n
                 break
             else:
-                print('senha invalida')
-                senha_n  = input('sua senha incluir numero e caracter especial como @#$%&  ')
+                print('senha inválida')
+                senha_n  = input('Sua senha (inclua número e caractere especial como @, #, %, &):   ')
 
         acesso = int(0)    
         temp_acesso = int(0)
@@ -68,21 +68,6 @@ class Aluno:
             dados= json.loads(texto)
     
       
-    def deletar_aluno(self):
-        id_deletar = input("Digite o ID do aluno para deletar: ")
-        nova_lista = []
-        for aluno in self.lista_aluno:
-            if str(aluno.get('id')) != id_deletar:
-                nova_lista.append(aluno)
-
-        if len(nova_lista) == len(self.lista_aluno):
-            print("Aluno não encontrado.")
-        else:
-            self.lista_aluno = nova_lista
-            with open('arquivos/dados.json', 'w') as arquivo:
-                json.dump(nova_lista, arquivo, indent=4)
-
-            print(f"Aluno com ID {id_deletar} foi deletado com sucesso.")
 
     def logar(self,senha_av,aluno_email):
         aluno_encontrado = None
@@ -107,7 +92,7 @@ class Aluno:
             return aluno_email
  
         else:
-            print('senha invalida')
+            print('senha inválida')
             return None
 
 
@@ -147,23 +132,23 @@ class Aluno:
                 break
                     
 
-        if operacao == 1:
-            novo_nome = input('Digite o novo nome  ')
+        if operacao == '1':
+            novo_nome = input('Digite o novo nome:  ')
             aluno_encontrado['nome'] = novo_nome
-        elif operacao == 2:
-            nova_idade = int(input('Digite a nova idade  '))
+        elif operacao == '2':
+            nova_idade = int(input('Digite a nova idade:  '))
             aluno_encontrado['idade'] = nova_idade
-        elif operacao == 3:
+        elif operacao == '3':
             while True:    
-                novo_email = input('Digite o novo email ')
+                novo_email = input('Digite o novo email: ')
                 if '@' in novo_email and '.' in novo_email :
                     aluno_encontrado['email'] = novo_email
                     break
                 else:
-                    print('email invalido')
-        elif operacao == 4:
+                    print('email inválido')
+        elif operacao == '4':
             while True:
-                nova_senha  = input('sua senha incluir numero e caracter especial  ')
+                nova_senha  = input('Digite a nova senha (inclua número e caractere especial): ')
                 especiais = r'!@#$%&*_+*/-+[]{^}~ç:.,<>\?;|'
                 tem_especial = any(char in especiais for char in nova_senha)
                 tem_numero = any(char.isdigit() for char in nova_senha)
@@ -172,8 +157,32 @@ class Aluno:
                     aluno_encontrado['senha'] = nova_senha 
                     break
                 else:
-                    print('senha invalida')
+                    print('senha inválida')
         
+        
+        elif operacao == '5' :
+            nova_lista = []
+            for aluno in self.lista_aluno:
+                if str(aluno.get('email')) != aluno_email_logar:
+                    nova_lista.append(aluno)
+
+            if len(nova_lista) == len(self.lista_aluno):
+                print("Aluno não encontrado.")
+            else:
+                self.lista_aluno = nova_lista
+                with open('arquivos/dados.json', 'w') as arquivo:
+                    json.dump(nova_lista, arquivo, indent=4)
+
+                print(f"Aluno com email {aluno_email_logar} foi deletado com sucesso.")
+                email_dell = 'email_dell'
+                return email_dell 
+
+        
+        
+        else:
+            print('comando não encontrado')
+        
+                
         with open('arquivos/dados.json', 'w') as arquivo:
             json.dump(self.lista_aluno, arquivo, indent=4)
 
@@ -193,7 +202,7 @@ class Cod:
                     print("\nCódigo final:")
                     print("\n".join(codigo))
                     print("\nExecutando...\n")
-                    t = random.randint(0, 4) 
+                    t = random.randint(0, 2) 
                     time.sleep(t)
                     exec("\n".join(codigo))
                     break

@@ -28,17 +28,6 @@
         "nota": []
     },
     {
-        "id": 3,
-        "nome": "andrez",
-        "idade": "26",
-        "email": "andrez@gmail.com",
-        "senha": "$2b$12$3aBLD0z8N2yCwZT1N5Li6.3YQNNgjTSuHZlR4Ww.aHjhkL9kK6yn2",
-        "acesso": 0,
-        "temp_acesso": 0,
-        "media_nota": 0,
-        "nota": []
-    },
-    {
         "id": 4,
         "nome": "silva",
         "idade": 65,
@@ -50,5 +39,27 @@
         "nota": [
             3
         ]
+    },
+    {
+        "id": 5,
+        "nome": "b",
+        "idade": 5,
+        "email": "adm",
+        "senha": "$2b$12$n/JcC2dtwXXOXK8pqO74l.ZqZNB0CH1Y0ASRVffKb04LIcKhHZisC",
+        "acesso": 3,
+        "temp_acesso": 0.92,
+        "media_nota": 0,
+        "nota": []
+    },
+    {
+        "id": 6,
+        "nome": "deividdeivid",
+        "idade": 30,
+        "email": "gmai@.com",
+        "senha": "$2b$12$SpbreJjjsbwJfCbtQ.Tv5edSUgI/49wS.9uQcNKdzEnx15ol8Y4re",
+        "acesso": 1,
+        "temp_acesso": 0,
+        "media_nota": 0,
+        "nota": []
     }
 ]

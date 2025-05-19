@@ -197,7 +197,7 @@ e ) Criando uma variável nova.
         for tema, perguntas in self.perguntas.items():
             perguntas_selecionadas.extend(random.sample(perguntas,2))
         
-        random.shuffle(perguntas_selecionadas)  # Embaralha as perguntas
+        random.shuffle(perguntas_selecionadas) 
         return perguntas_selecionadas
     
     
